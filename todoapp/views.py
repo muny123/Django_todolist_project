@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Todo
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def todo_list(request):
     todos = Todo.objects.all()  # Fetch all tasks
     return render(request, 'index.html', {'todos': todos})
